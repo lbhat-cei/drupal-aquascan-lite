@@ -1,0 +1,15 @@
+aquascan_lite.dashboard:
+  path: '/admin/aquascan/dashboard'
+  defaults:
+    _controller: '\Drupal\aquascan_lite\Controller\DashboardController::index'
+    _title: 'AquaScan dashboard'
+  requirements:
+    _permission: 'access aquascan dashboard'
+
+aquascan_lite.upload:
+  path: '/admin/aquascan/upload'
+  defaults:
+    _form: '\Drupal\aquascan_lite\Form\UploadForm'
+    _title: 'Upload data'
+  requirements:
+    _permission: 'access aquascan dashboard'

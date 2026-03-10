@@ -1,0 +1,6 @@
+name: 'AquaScan Lite'
+type: module
+description: 'Demonstration module simulating an industrial water analytics application.'
+package: Custom
+core_version_requirement: ^10
+dependencies: []

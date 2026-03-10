@@ -1,0 +1,4 @@
+access aquascan dashboard:
+  title: 'Access AquaScan dashboard'
+  description: 'View the AquaScan dashboard and upload pages.'
+  restrict: true

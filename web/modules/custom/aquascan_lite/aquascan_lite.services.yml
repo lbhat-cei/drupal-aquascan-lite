@@ -1,0 +1,4 @@
+services:
+  aquascan_lite.kpi_calculator:
+    class: '\Drupal\aquascan_lite\Service\KpiCalculator'
+    public: false
