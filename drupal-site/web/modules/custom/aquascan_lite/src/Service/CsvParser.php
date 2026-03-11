@@ -2,33 +2,30 @@
 
 namespace Drupal\aquascan_lite\Service;
 
-use Drupal\Core\Database\Database;
+class CsvParser {
 
-class MeasurementRepository {
+  public function parse($filepath) {
 
-  public function save(array $row, $source) {
+    $rows = [];
+    if (!file_exists($filepath)) {
+      return $rows;
+    }
 
-    $connection = Database::getConnection();
+    $handle = fopen($filepath, 'r');
 
-    $connection->insert('aquascan_measurements')
-      ->fields([
-        'measurement_date' => $row['measurement_date'],
-        'water_usage' => $row['water_usage'],
-        'energy_usage' => $row['energy_usage'],
-        'production_output' => $row['production_output'],
-        'source_file' => $source,
-        'created' => time(),
-      ])
-      ->execute();
-  }
+    $header = fgetcsv($handle);
 
-  public function fetchAll() {
+    while (($data = fgetcsv($handle)) !== FALSE) {
+      $rows[] = [
+        'measurement_date' => $data[0],
+        'water_usage' => (float) $data[1],
+        'energy_usage' => (float) $data[2],
+        'production_output' => (float) $data[3],
+      ];
+    }
 
-    $connection = Database::getConnection();
+    fclose($handle);
 
-    return $connection->select('aquascan_measurements', 'm')
-      ->fields('m')
-      ->execute()
-      ->fetchAll();
+    return $rows;
   }
 }
