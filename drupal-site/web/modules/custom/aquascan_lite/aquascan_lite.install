@@ -1,0 +1,36 @@
+<?php
+
+function aquascan_lite_schema() {
+  $schema['aquascan_measurements'] = [
+    'description' => 'Stores industrial measurement records.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'measurement_date' => [
+        'type' => 'varchar',
+        'length' => 32,
+      ],
+      'water_usage' => [
+        'type' => 'float',
+      ],
+      'energy_usage' => [
+        'type' => 'float',
+      ],
+      'production_output' => [
+        'type' => 'float',
+      ],
+      'source_file' => [
+        'type' => 'varchar',
+        'length' => 255,
+      ],
+      'created' => [
+        'type' => 'int',
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}

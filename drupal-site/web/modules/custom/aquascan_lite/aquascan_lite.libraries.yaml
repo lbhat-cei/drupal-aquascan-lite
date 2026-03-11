@@ -1,0 +1,7 @@
+dashboard_charts:
+  version: 1.x
+  js:
+    js/aquascan_dashboard.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
